@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+:root {
+  --main-color: #1a7cb9;
+}
+/* Cabecalho */
+header {
+  border-bottom: 5px solid var(--main-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.logo-header {
+  max-width: 300px;
+}
+.logo-header img {
+  width: 100%;
+}
+.button-header {
+  width: 100px;
+  height: 120px;
+}
