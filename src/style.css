@@ -4,6 +4,9 @@ body {
 :root {
   --main-color: #1a7cb9;
 }
+.hidden {
+  display: none;
+}
 /* Cabecalho */
 header {
   border-bottom: 5px solid var(--main-color);
@@ -21,4 +24,26 @@ header {
 .button-header {
   width: 100px;
   height: 120px;
+}
+/*Modal New Book*/
+#modal-newbook {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+#form-livro {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#form-livro input {
+  padding: 10px;
+  border: none;
+}
+#form-livro button {
+  border: none;
+  padding: 15px;
+}
+#form-livro button:hover {
+  background-color: aqua;
 }
