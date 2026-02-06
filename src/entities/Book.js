@@ -15,6 +15,22 @@ export class Book {
             return false;
         }
     }
+
+    // get title() {
+    //     return this.title
+    // }
+    // get author() {
+    //     return this.author
+    // }
+    // get pages() {
+    //     return this.pages
+    // }
+    // get image() {
+    //     return this.image
+    // }
+    // get stock() {
+    //     return this.stock
+    // }
 }
 
 
