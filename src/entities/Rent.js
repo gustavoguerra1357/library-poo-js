@@ -4,4 +4,5 @@ export class Rent {
         this.date = new Date();
         this.devolucao = devolucao
     }
+
 }

@@ -70,33 +70,7 @@ function createCard(book) {
     stock.innerText = book.author;
 
     div.addEventListener("click", e => {
-        const infoBook = document.querySelector("#modal-infoBook");
-        const closeBtn = document.querySelector("#close-info");
-        
-        closeBtn.addEventListener("click", (x) => {
-            infoBook.classList.add("hidden")
-        })
-
-        document.querySelector("#image-book").src = book.image;
-        document.querySelector("#title-book").innerText = "Titulo: " + book.title;
-        document.querySelector("#author-book").innerText = "Autor: " + book.author;
-        document.querySelector("#pages-book").innerText = "Páginas: " + book.pages;
-        document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
-
-        document.querySelector("#form-rent").addEventListener("submit", event => {
-            event.preventDefault();
-            const name = document.querySelector("#name-input").value;
-            const date = document.querySelector("#date-input").valueAsDate;
-            const rent = new Rent(name, date);
-            book.rent(rent);
-            document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
-            renderRents(book);
-
-            
-
-        })
-
-        infoBook.classList.remove("hidden");
+        openBook();
     })
 
     div.append(image, title, author, stock);
@@ -105,14 +79,59 @@ function createCard(book) {
 }
 function renderRents(book) {
     const rentsContainer = document.querySelector("#rents-container");
+    rentsContainer.innerHTML = "";
     const rentsOfBook = book.rents;
 
     rentsOfBook.forEach(e => {
         const div = document.createElement("div");
+        const devolvido = document.createElement("button");
+        devolvido.innerText = "X"
+        devolvido.classList.add("botao-devolvido");
+        devolvido.addEventListener("click", () => {
+            div.remove();
+            const index = book.rents.indexOf(e); // Encontra a posição deste objeto específico
+            if (index > -1) {
+                book.rents.splice(index, 1); // Remove 1 item naquela posição
+                book.stock += 1;
+                document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
+            }
+        })
         div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
+        div.appendChild(devolvido);
         rentsContainer.appendChild(div);
-
     })
 
 }
 
+
+function updateInfos(book) {
+    document.querySelector("#image-book").src = book.image;
+    document.querySelector("#title-book").innerText = "Titulo: " + book.title;
+    document.querySelector("#author-book").innerText = "Autor: " + book.author;
+    document.querySelector("#pages-book").innerText = "Páginas: " + book.pages;
+    document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
+}
+
+function openBook(book) {
+    const infoBook = document.querySelector("#modal-infoBook");
+    const closeBtn = document.querySelector("#close-info");
+
+    closeBtn.addEventListener("click", (x) => {
+        infoBook.classList.add("hidden")
+    })
+    updateInfos(book)
+    document.querySelector("#form-rent").addEventListener("submit", event => {
+        event.preventDefault();
+        const name = document.querySelector("#name-input").value;
+        const date = document.querySelector("#date-input").valueAsDate;
+        const rent = new Rent(name, date);
+        book.rent(rent);
+        updateInfos(book)
+
+
+
+    })
+
+    renderRents(book);
+    infoBook.classList.remove("hidden");
+}

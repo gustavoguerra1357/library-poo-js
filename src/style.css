@@ -121,6 +121,34 @@ header {
 }
 #rents-container {
   width: 100%;
-  border: 1px solid blue;
+  border: 1px solid rgb(255, 111, 0);
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+#rents-container > div {
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+#rents-container > *:nth-child(odd) {
+  background-color: rgb(231, 231, 231);
+}
+.botao-devolvido {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
+  border-radius: 50px;
+  border: 2px solid rgb(255, 85, 85);
+  color: #FFF;
+  background: rgb(253, 89, 89);
+}
+.botao-devolvido:hover {
+  background-color: rgb(255, 11, 11);
 }
