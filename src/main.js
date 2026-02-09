@@ -1,6 +1,7 @@
 import './style.css'
 import { Book } from './entities/Book.js';
 import { Library } from './entities/Library.js';
+import { Rent } from './entities/Rent.js';
 
 const library = new Library();
 
@@ -82,11 +83,36 @@ function createCard(book) {
         document.querySelector("#pages-book").innerText = "Páginas: " + book.pages;
         document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
 
+        document.querySelector("#form-rent").addEventListener("submit", event => {
+            event.preventDefault();
+            const name = document.querySelector("#name-input").value;
+            const date = document.querySelector("#date-input").valueAsDate;
+            const rent = new Rent(name, date);
+            book.rent(rent);
+            document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
+            renderRents(book);
+
+            
+
+        })
+
         infoBook.classList.remove("hidden");
     })
 
     div.append(image, title, author, stock);
     listOfBooks.appendChild(div);
+
+}
+function renderRents(book) {
+    const rentsContainer = document.querySelector("#rents-container");
+    const rentsOfBook = book.rents;
+
+    rentsOfBook.forEach(e => {
+        const div = document.createElement("div");
+        div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
+        rentsContainer.appendChild(div);
+
+    })
 
 }
 

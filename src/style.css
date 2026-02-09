@@ -88,8 +88,9 @@ header {
   background-color: #FFF;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
+  overflow-y: auto;
 }
 #close-info {
   position: absolute;
@@ -117,4 +118,9 @@ header {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+#rents-container {
+  width: 100%;
+  border: 1px solid blue;
+  height: 200px;
 }
