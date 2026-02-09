@@ -26,10 +26,10 @@
       <input type="text" id="author" placeholder="Autor" required>
       <input type="number" id="pages" placeholder="Páginas" required>
       <input type="number" id="stock" placeholder="Estoque" required>
-      
+
       <label>Capa do Livro:</label>
       <input type="file" id="input-imagem" accept="image/*" required>
-      
+
       <button id="submit-book" type="submit">Salvar Livro</button>
       <button type="button" id="btn-cancelar">Cancelar</button>
     </form>
@@ -38,6 +38,34 @@
 
   <div id="list-books">
 
+  </div>
+
+  <div id="modal-infoBook" class="hidden">
+    <button type="button" id="close-info">X</button>
+    <div class="info-container">
+      <div id="header-info">
+        <h1>Informações sobre o Livro:</h1>
+      </div>
+      <div>
+        <img src="" id="image-book" alt="Capa do Livro">
+        <h1 id="title-book">Titulo: </h1>
+        <h2 id="author-book">Autor: </h2>
+        <h2 id="pages-book">Páginas: </h2>
+      </div>
+      <div>
+        <span id="stock-book">Em estoque: </span>
+      </div>
+    </div>
+    <div class="rent-container">
+        <h1>Alugar</h1>
+        <form id="form-rent">
+          <label for="name">Nome: </label>
+          <input type="text" name="name" id="name-input">
+          <label for="name">Devolução: </label>
+          <input type="date" name="name" id="name-input">
+          <button type="submit" id="rent-btn">Alugar</button>
+        </form>
+    </div>
   </div>
 
 

@@ -21,9 +21,8 @@ newBtn.addEventListener("click", e => {
     modalNewBook.classList.remove("hidden")
 })
 
-form.addEventListener('submit', (event) => { addBock(event) })
-
-function addBock(event) {
+//Adicionando livro
+form.addEventListener('submit', (event) => {
     event.preventDefault(); // impede o reload da página
     const title = titleInput.value;
     const author = authorInput.value;
@@ -32,10 +31,9 @@ function addBock(event) {
 
     const imageFile = imageInput.files[0]; // arquivo da imagem
     const leitor = new FileReader()
-    const id = crypto.randomUUID();
     leitor.onload = function (e) {
         const imagemBase64 = e.target.result;
-        const newBook = new Book(id, title, author, pages, imagemBase64, stock);
+        const newBook = new Book(title, author, pages, imagemBase64, stock);
         library.addBook(newBook);
         renderBooks();
 
@@ -43,16 +41,13 @@ function addBock(event) {
     if (imageFile) {
         leitor.readAsDataURL(imageFile);
     }
-    renderBooks();
-}
+})
+
+
 
 function renderBooks() {
-    // const listOfBooks = document.querySelector("#list-books")
-
-    // Array.from(listOfBooks.children).forEach(e => {
-    //     e.remove();
-    // })
-
+    const listOfBooks = document.querySelector("#list-books");
+    listOfBooks.innerHTML = ""
     const allBooks = library.getAllBooks();
     allBooks.forEach(book => {
         createCard(book)
@@ -72,6 +67,23 @@ function createCard(book) {
     title.innerText = book.title;
     author.innerText = book.author;
     stock.innerText = book.author;
+
+    div.addEventListener("click", e => {
+        const infoBook = document.querySelector("#modal-infoBook");
+        const closeBtn = document.querySelector("#close-info");
+        
+        closeBtn.addEventListener("click", (x) => {
+            infoBook.classList.add("hidden")
+        })
+
+        document.querySelector("#image-book").src = book.image;
+        document.querySelector("#title-book").innerText = "Titulo: " + book.title;
+        document.querySelector("#author-book").innerText = "Autor: " + book.author;
+        document.querySelector("#pages-book").innerText = "Páginas: " + book.pages;
+        document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
+
+        infoBook.classList.remove("hidden");
+    })
 
     div.append(image, title, author, stock);
     listOfBooks.appendChild(div);

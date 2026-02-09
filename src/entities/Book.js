@@ -1,36 +1,22 @@
 export class Book {
-    constructor(id, title, author, pages, image, stock) {
-        this.id = id;
+    constructor(title, author, pages, image, stock) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.image = image;
         this.stock = stock;
+        this.rents = []
     }
-    rent() {
+    rent(rent) {
         if (this.stock > 0) {
             this.stock--;
+            this.rents.push(rent)
             return true;
         } else {
             return false;
         }
     }
 
-    // get title() {
-    //     return this.title
-    // }
-    // get author() {
-    //     return this.author
-    // }
-    // get pages() {
-    //     return this.pages
-    // }
-    // get image() {
-    //     return this.image
-    // }
-    // get stock() {
-    //     return this.stock
-    // }
 }
 
 

@@ -32,4 +32,5 @@ export class Library {
     getRentedBooks() {
         return this.rentedBooks;
     }
+
 }

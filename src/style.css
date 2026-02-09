@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&display=swap');
+
 body {
   margin: 0;
+  font-family: "Sora", sans-serif;
+  color: rgb(32, 32, 32);
+}
+h1 {
+  font-size: 1.5rem;
 }
 :root {
   --main-color: #1a7cb9;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 /* Cabecalho */
 header {
@@ -30,6 +37,7 @@ header {
   width: 90%;
   max-width: 600px;
   margin: 0 auto;
+  margin-top: 50px;
 }
 #form-livro {
   display: flex;
@@ -46,4 +54,67 @@ header {
 }
 #form-livro button:hover {
   background-color: aqua;
+}
+/*Lista de Livros*/
+#list-books {
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+#list-books > div {
+  width: 200px;
+  transition: all .2s;
+}
+#list-books > div:hover {
+  transform: scale(1.02);
+}
+#list-books img {
+  width: 100%;
+}
+
+/* Modal info book */
+#modal-infoBook {
+  width: 60vw;
+  height: 90vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid red;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+#close-info {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  padding: 10px;
+}
+.info-container {
+  width: calc(50% - 5px);
+  box-sizing: border-box;
+  padding: 40px;
+}
+.rent-container {
+  width: calc(50% - 5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+#image-book {
+  max-width: 200px;
+}
+#form-rent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
