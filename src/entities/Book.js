@@ -16,6 +16,14 @@ export class Book {
             return false;
         }
     }
+    devolver(indice) {
+        if(indice > -1) {
+            this.rents.splice(indice, 1); // Remove 1 item naquela posição
+            this.stock += 1;
+            return true
+        }
+        return false;
+    }
 
 }
 

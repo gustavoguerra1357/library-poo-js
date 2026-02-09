@@ -51,12 +51,11 @@ function renderBooks() {
     listOfBooks.innerHTML = ""
     const allBooks = library.getAllBooks();
     allBooks.forEach(book => {
-        createCard(book)
+        createCard(book, listOfBooks)
     })
 }
 
-function createCard(book) {
-    const listOfBooks = document.querySelector("#list-books")
+function createCard(book, listOfBooks) {
 
     const div = document.createElement("div");
     const image = document.createElement("img");
@@ -70,12 +69,37 @@ function createCard(book) {
     stock.innerText = book.author;
 
     div.addEventListener("click", e => {
-        openBook();
+        e.stopPropagation();
+        openBook(book);
     })
 
     div.append(image, title, author, stock);
     listOfBooks.appendChild(div);
 
+}
+function openBook(book) {
+    //Essa funcao é responsavel por abrir e mostrar todas as informações do livro
+    const infoBook = document.querySelector("#modal-infoBook");
+    const closeBtn = document.querySelector("#close-info");
+
+    closeBtn.onclick = () => {
+        infoBook.classList.add("hidden")
+    }
+    updateInfos(book)
+
+    const RentBtn = document.querySelector("#rent-btn");
+
+    RentBtn.onclick = () => {
+        const name = document.querySelector("#name-input").value;
+        const date = document.querySelector("#date-input").valueAsDate;
+        const rent = new Rent(name, date);
+        book.rent(rent);
+        updateInfos(book)
+        renderRents(book);
+    }
+
+    renderRents(book);
+    infoBook.classList.remove("hidden");
 }
 function renderRents(book) {
     const rentsContainer = document.querySelector("#rents-container");
@@ -89,12 +113,9 @@ function renderRents(book) {
         devolvido.classList.add("botao-devolvido");
         devolvido.addEventListener("click", () => {
             div.remove();
-            const index = book.rents.indexOf(e); // Encontra a posição deste objeto específico
-            if (index > -1) {
-                book.rents.splice(index, 1); // Remove 1 item naquela posição
-                book.stock += 1;
-                document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
-            }
+            const index = rentsOfBook.indexOf(e); // Encontra a posição deste objeto específico
+            book.devolver(index);
+            updateInfos(book);
         })
         div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
         div.appendChild(devolvido);
@@ -112,26 +133,4 @@ function updateInfos(book) {
     document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
 }
 
-function openBook(book) {
-    const infoBook = document.querySelector("#modal-infoBook");
-    const closeBtn = document.querySelector("#close-info");
 
-    closeBtn.addEventListener("click", (x) => {
-        infoBook.classList.add("hidden")
-    })
-    updateInfos(book)
-    document.querySelector("#form-rent").addEventListener("submit", event => {
-        event.preventDefault();
-        const name = document.querySelector("#name-input").value;
-        const date = document.querySelector("#date-input").valueAsDate;
-        const rent = new Rent(name, date);
-        book.rent(rent);
-        updateInfos(book)
-
-
-
-    })
-
-    renderRents(book);
-    infoBook.classList.remove("hidden");
-}
