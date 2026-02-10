@@ -6,6 +6,7 @@ import { Rent } from './entities/Rent.js';
 const library = new Library();
 
 const newBtn = document.querySelector("#newBtn")
+const closeNewBtn = document.querySelector("#btn-cancelar")
 const form = document.querySelector("#form-livro")
 const modalNewBook = document.querySelector("#modal-newbook")
 
@@ -20,6 +21,9 @@ const stockInput = document.querySelector('#stock');
 
 newBtn.addEventListener("click", e => {
     modalNewBook.classList.remove("hidden")
+});
+closeNewBtn.addEventListener("click", e => {
+    modalNewBook.classList.add("hidden")
 })
 
 //Adicionando livro

@@ -18,113 +18,93 @@ h1 {
   display: none !important;
 }
 
-/* Cabecalho */
+/* 1 CABECALHO */
 
 header {
   display: flex;
-  flex-direction: row; 
-  justify-content: space-between; 
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  padding: 30px 60px; 
+  padding: 30px 60px;
   background-color: #ffffff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 2. LOGO */
+/* 1.1 LOGO */
 .logo-header img {
-  height: 50px; /* Tamanho controlado */
+  height: 50px;
   width: auto;
   display: block;
 }
 
-/* 3. CONTAINER DOS BOTÕES (Onde estão os botões agrupados) */
-header > div:last-child {
+
+header>div:last-child {
   display: flex;
-  gap: 20px; /* Espaço entre um botão e outro */
+  gap: 20px;
 }
 
-/* 4. ESTILO DOS BOTÕES (Padrão para todos) */
 .button-header {
-  /* Cor Inicial (Azul Escuro/Cinza Profundo) */
-  background-color: #2c3e50; 
+  background-color: #2c3e50;
   color: white;
-  
-  /* Tamanho e Forma */
   padding: 12px 30px;
   border: none;
-  border-radius: 50px; /* Borda redonda (Pílula) */
-  
-  /* Texto */
+  border-radius: 50px;
   font-weight: 600;
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  
-  /* Comportamento */
   cursor: pointer;
-  transition: all 0.3s ease; /* Suaviza a troca de cor */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* 5. EFEITO HOVER (Ao passar o mouse) */
 .button-header:hover {
-  /* A cor que você pediu: VERDE */
-  background-color: #2e7d32; 
-  
-  /* Efeito visual extra */
-  transform: translateY(-3px); /* Sobe um pouquinho */
-  box-shadow: 0 8px 15px rgba(46, 125, 50, 0.2); /* Sombra verde */
+  background-color: #2e7d32;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(46, 125, 50, 0.2);
 }
 
-/* Efeito Active (Ao clicar) */
 .button-header:active {
-  transform: translateY(1px); /* Desce um pouco ao clicar */
+  transform: translateY(1px);
 }
 
-/*Modal New Book*/
+/*2 - MODAL NEW BOOK*/
 #modal-newbook {
   width: 90%;
-  max-width: 500px; /* Um pouco mais estreito para ficar elegante */
+  max-width: 500px;
   margin: 50px auto;
   background-color: #ffffff;
   padding: 30px;
-  border-radius: 12px; /* Mesma curvatura do card */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra mais profunda pois "flutua" */
+  border-radius: 12px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border: 1px solid #e0e0e0;
 }
 
-/* 2. O Layout do Formulário */
 #form-livro {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Espaçamento maior para respirar */
+  gap: 15px;
 }
 
-/* 3. Estilo Geral dos Inputs */
 #form-livro input {
   padding: 12px 15px;
   border: 1px solid #ddd;
-  background-color: #f9f9f9; /* Fundo levemente cinza para contraste */
+  background-color: #f9f9f9;
   border-radius: 8px;
   font-size: 1rem;
   color: #333;
   transition: all 0.3s ease;
-  outline: none; /* Remove a linha azul padrão feia */
+  outline: none;
 }
 
-/* Efeito ao clicar no input */
 #form-livro input:focus {
-  border-color: #2e7d32; /* Verde igual ao badge de estoque */
+  border-color: #2e7d32;
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1); /* Brilho suave verde */
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
-/* 4. Label da Imagem */
 #form-livro label {
   font-weight: 600;
   color: #2c3e50;
@@ -132,14 +112,12 @@ header > div:last-child {
   font-size: 0.9rem;
 }
 
-/* Input de Arquivo (File) */
 #input-imagem {
   padding: 10px;
   background: white;
-  border: 1px dashed #ccc; /* Borda pontilhada indica área de drop */
+  border: 1px dashed #ccc;
 }
 
-/* 5. Botões (Base) */
 #form-livro button {
   padding: 14px;
   font-size: 1rem;
@@ -150,20 +128,18 @@ header > div:last-child {
   transition: transform 0.2s, background-color 0.2s;
 }
 
-/* Botão Salvar (Primary) */
 #submit-book {
-  background-color: #2e7d32; /* Verde forte */
+  background-color: #2e7d32;
   color: white;
   margin-top: 10px;
 }
 
 #submit-book:hover {
-  background-color: #1b5e20; /* Verde mais escuro */
+  background-color: #1b5e20;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
 }
 
-/* Botão Cancelar (Secondary) */
 #btn-cancelar {
   background-color: transparent;
   color: #7f8c8d;
@@ -175,7 +151,7 @@ header > div:last-child {
   color: #333;
 }
 
-/*Lista de Livros*/
+/*3 - LISTA DE LIVROS*/
 #list-books {
   width: 90%;
   max-width: 1280px;
@@ -192,7 +168,6 @@ header > div:last-child {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  /* Garante que a imagem respeite as bordas arredondadas */
   text-align: center;
   transition: all 0.3s ease;
   border: 1px solid #e0e0e0;
@@ -209,9 +184,7 @@ header > div:last-child {
 #list-books img {
   width: 100%;
   height: 320px;
-  /* Altura fixa para manter padrão */
   object-fit: cover;
-  /* Corta a imagem para caber sem distorcer */
   border-bottom: 1px solid #eee;
 }
 
@@ -236,70 +209,199 @@ header > div:last-child {
   font-weight: bold;
   padding: 8px 0;
   margin: auto 15px 15px 15px;
-  /* "auto" no topo empurra para o fim do card */
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-/* Modal info book */
+/* 4 - MODAL INFO BOOK */
 #modal-infoBook {
-  width: 60vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
+  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 3px solid red;
   background-color: #FFF;
+  padding: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
-  overflow-y: auto;
+
 }
 
 #close-info {
-  position: absolute;
+  position: fixed;
   right: 10px;
   top: 10px;
   padding: 10px;
+  border-radius: 50px;
 }
 
+/*4.1 - INFO CONTAINER*/
 .info-container {
   width: calc(50% - 5px);
+  height: 100%;
+  background-color: #ffffff;
   box-sizing: border-box;
-  padding: 40px;
-}
-
-.rent-container {
-  width: calc(50% - 5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  border: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#header-info h1 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #f4f4f4;
+  padding-bottom: 15px;
 }
 
 #image-book {
-  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+}
+
+#title-book {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+#author-book {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 500;
+}
+
+#pages-book {
+  font-size: 1rem;
+  color: #888;
+  font-weight: 400;
+  margin: 5px 0 20px 0;
+}
+
+#stock-book {
+  display: inline-block;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+}
+
+/*4.2 - RENT CONTAINER*/
+.rent-container {
+  background-color: #ffffff;
+  width: calc(50% - 5px);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #e0e0e0;
+}
+
+.rent-container h1 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  border-bottom: 2px solid #f4f4f4;
+  padding-bottom: 10px;
 }
 
 #form-rent {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
+#form-rent label {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  margin-bottom: -5px;
+  display: block;
+  text-align: left;
+}
+
+#name-input,
+#date-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+#name-input:focus,
+#date-input:focus {
+  border-color: #2e7d32;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+#rent-btn {
+  margin-top: 10px;
+  padding: 14px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: 100%;
+}
+
+#rent-btn:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+}
+
+#rent-btn:active {
+  transform: translateY(0);
+}
+
+/*4.3 - RENTS OF THE BOOK*/
 #rents-container {
   width: 100%;
-  border: 1px solid rgb(255, 111, 0);
-  height: 200px;
+  margin-top: 20px;
+  max-height: 200px;
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 #rents-container>div {
@@ -327,4 +429,34 @@ header > div:last-child {
 
 .botao-devolvido:hover {
   background-color: rgb(255, 11, 11);
+}
+
+@media (max-width: 1280px) {
+  /* 4 - MODAL INFO BOOK */
+  .info-container {
+    width: 100%;
+    min-height: 650px;
+    margin-bottom: 20px;
+  }
+  #modal-infoBook {
+    width: 100%;
+    height: inherit;
+    display: block;
+    transform: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    overflow-y: scroll;
+  }
+  .rent-container {
+    width: 100%;
+  }
+  #rents-container {
+    min-height: 300px;
+  }
+  #list-books {
+    justify-content: center;
+  }
 }
