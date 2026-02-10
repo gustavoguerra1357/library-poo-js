@@ -25,6 +25,10 @@ export class Book {
         return false;
     }
 
+    removerAluguel(rent) {
+        this.rents = this.rents.filter(r => r !== rent);
+    }
+
 }
 
 

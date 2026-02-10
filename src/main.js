@@ -97,7 +97,7 @@ function openBook(book) {
         const name = document.querySelector("#name-input").value;
         const date = document.querySelector("#date-input").valueAsDate;
         const rent = new Rent(name, date);
-        book.rent(rent);
+        library.rentBook(book, rent);
         updateInfos(book)
         renderRents(book);
     }
@@ -108,7 +108,7 @@ function openBook(book) {
 function renderRents(book) {
     const rentsContainer = document.querySelector("#rents-container");
     rentsContainer.innerHTML = "";
-    const rentsOfBook = book.rents;
+    const rentsOfBook = book.rents; // cada array vai ser um rent
 
     rentsOfBook.forEach(e => {
         const div = document.createElement("div");
@@ -117,8 +117,8 @@ function renderRents(book) {
         devolvido.classList.add("botao-devolvido");
         devolvido.addEventListener("click", () => {
             div.remove();
-            const index = rentsOfBook.indexOf(e); // Encontra a posição deste objeto específico
-            book.devolver(index);
+            // const index = rentsOfBook.indexOf(e); // Encontra a posição deste objeto específico
+            book.removerAluguel(e);
             updateInfos(book);
         })
         div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
@@ -137,4 +137,31 @@ function updateInfos(book) {
     document.querySelector("#stock-book").innerText = "Em Estoque: " + book.stock;
 }
 
+document.querySelector("#rentsBtn").addEventListener("click", x => {
+    const modalRents = document.querySelector("#modal-rents")
+    console.log(library.getRentedBooks());
+    modalRents.classList.remove("hidden");
+    const rents = library.getRentedBooks();
+    rents.forEach((x) => { //x = [livro, rent]
+        const div = document.createElement("div");
 
+        const devolvido = document.createElement("button");
+        devolvido.innerText = "X"
+        devolvido.classList.add("botao-devolvido");
+        devolvido.addEventListener("click", () => {
+            div.remove();
+            // const index = rents.indexOf(x); // Encontra a posição deste objeto específico
+            library.removerAluguel(x[1])
+
+        })
+
+        const formatedDate = new Intl.DateTimeFormat('pt-BR').format(x[1].devolucao)
+        div.innerText = "Titulo: " + x[0].title + ", Data de Devolução: " + formatedDate;
+        div.appendChild(devolvido);
+        modalRents.appendChild(div);
+    })
+})
+
+document.querySelector("#close-rents").addEventListener("click", x => {
+    document.querySelector("#modal-rents").classList.add("hidden")
+})

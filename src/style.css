@@ -33,7 +33,7 @@ header {
 
 /* 1.1 LOGO */
 .logo-header img {
-  height: 50px;
+  height: 100px;
   width: auto;
   display: block;
 }
@@ -431,13 +431,46 @@ header>div:last-child {
   background-color: rgb(255, 11, 11);
 }
 
+#modal-rents {
+  width: 90%;
+  max-width: 700px;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid red;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.header-rents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue;
+}
+.header-rents button {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+#rentsbook-list {
+  min-height: 350px;
+  border: 1px solid green;
+}
+
 @media (max-width: 1280px) {
+
   /* 4 - MODAL INFO BOOK */
   .info-container {
     width: 100%;
     min-height: 650px;
     margin-bottom: 20px;
   }
+
   #modal-infoBook {
     width: 100%;
     height: inherit;
@@ -450,12 +483,15 @@ header>div:last-child {
     border-radius: 0;
     overflow-y: scroll;
   }
+
   .rent-container {
     width: 100%;
   }
+
   #rents-container {
     min-height: 300px;
   }
+
   #list-books {
     justify-content: center;
   }
