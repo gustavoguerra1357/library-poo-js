@@ -5,56 +5,176 @@ body {
   font-family: "Sora", sans-serif;
   color: rgb(32, 32, 32);
 }
+
 h1 {
   font-size: 1.5rem;
 }
+
 :root {
   --main-color: #1a7cb9;
 }
+
 .hidden {
   display: none !important;
 }
+
 /* Cabecalho */
+
 header {
-  border-bottom: 5px solid var(--main-color);
   display: flex;
-  justify-content: space-between;
+  flex-direction: row; 
+  justify-content: space-between; 
   align-items: center;
-  padding: 20px;
+  padding: 30px 60px; 
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.logo-header {
-  max-width: 300px;
-}
+
+/* 2. LOGO */
 .logo-header img {
-  width: 100%;
+  height: 50px; /* Tamanho controlado */
+  width: auto;
+  display: block;
 }
+
+/* 3. CONTAINER DOS BOTÕES (Onde estão os botões agrupados) */
+header > div:last-child {
+  display: flex;
+  gap: 20px; /* Espaço entre um botão e outro */
+}
+
+/* 4. ESTILO DOS BOTÕES (Padrão para todos) */
 .button-header {
-  width: 100px;
-  height: 120px;
+  /* Cor Inicial (Azul Escuro/Cinza Profundo) */
+  background-color: #2c3e50; 
+  color: white;
+  
+  /* Tamanho e Forma */
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px; /* Borda redonda (Pílula) */
+  
+  /* Texto */
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Comportamento */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Suaviza a troca de cor */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
+/* 5. EFEITO HOVER (Ao passar o mouse) */
+.button-header:hover {
+  /* A cor que você pediu: VERDE */
+  background-color: #2e7d32; 
+  
+  /* Efeito visual extra */
+  transform: translateY(-3px); /* Sobe um pouquinho */
+  box-shadow: 0 8px 15px rgba(46, 125, 50, 0.2); /* Sombra verde */
+}
+
+/* Efeito Active (Ao clicar) */
+.button-header:active {
+  transform: translateY(1px); /* Desce um pouco ao clicar */
+}
+
 /*Modal New Book*/
 #modal-newbook {
   width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  margin-top: 50px;
+  max-width: 500px; /* Um pouco mais estreito para ficar elegante */
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px; /* Mesma curvatura do card */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra mais profunda pois "flutua" */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #e0e0e0;
 }
+
+/* 2. O Layout do Formulário */
 #form-livro {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Espaçamento maior para respirar */
 }
+
+/* 3. Estilo Geral dos Inputs */
 #form-livro input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9; /* Fundo levemente cinza para contraste */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
+  outline: none; /* Remove a linha azul padrão feia */
+}
+
+/* Efeito ao clicar no input */
+#form-livro input:focus {
+  border-color: #2e7d32; /* Verde igual ao badge de estoque */
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1); /* Brilho suave verde */
+}
+
+/* 4. Label da Imagem */
+#form-livro label {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Input de Arquivo (File) */
+#input-imagem {
   padding: 10px;
-  border: none;
+  background: white;
+  border: 1px dashed #ccc; /* Borda pontilhada indica área de drop */
 }
+
+/* 5. Botões (Base) */
 #form-livro button {
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
   border: none;
-  padding: 15px;
+  transition: transform 0.2s, background-color 0.2s;
 }
-#form-livro button:hover {
-  background-color: aqua;
+
+/* Botão Salvar (Primary) */
+#submit-book {
+  background-color: #2e7d32; /* Verde forte */
+  color: white;
+  margin-top: 10px;
 }
+
+#submit-book:hover {
+  background-color: #1b5e20; /* Verde mais escuro */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+}
+
+/* Botão Cancelar (Secondary) */
+#btn-cancelar {
+  background-color: transparent;
+  color: #7f8c8d;
+  border: 1px solid #ddd;
+}
+
+#btn-cancelar:hover {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
 /*Lista de Livros*/
 #list-books {
   width: 90%;
@@ -65,15 +185,61 @@ header {
   gap: 15px;
   flex-wrap: wrap;
 }
-#list-books > div {
-  width: 200px;
-  transition: all .2s;
+
+#list-books>div {
+  background-color: #fff;
+  width: 240px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* Garante que a imagem respeite as bordas arredondadas */
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
 }
-#list-books > div:hover {
-  transform: scale(1.02);
+
+#list-books>div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
+
+
 #list-books img {
   width: 100%;
+  height: 320px;
+  /* Altura fixa para manter padrão */
+  object-fit: cover;
+  /* Corta a imagem para caber sem distorcer */
+  border-bottom: 1px solid #eee;
+}
+
+#list-books>div h2 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 15px 10px 5px 10px;
+  line-height: 1.2;
+}
+
+#list-books>div h3 {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 400;
+  margin: 0 10px 15px 10px;
+}
+
+#list-books>div p {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 8px 0;
+  margin: auto 15px 15px 15px;
+  /* "auto" no topo empurra para o fim do card */
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Modal info book */
@@ -92,17 +258,20 @@ header {
   gap: 10px;
   overflow-y: auto;
 }
+
 #close-info {
   position: absolute;
   right: 10px;
   top: 10px;
   padding: 10px;
 }
+
 .info-container {
   width: calc(50% - 5px);
   box-sizing: border-box;
   padding: 40px;
 }
+
 .rent-container {
   width: calc(50% - 5px);
   display: flex;
@@ -111,14 +280,17 @@ header {
   display: flex;
   flex-direction: column;
 }
+
 #image-book {
   max-width: 200px;
 }
+
 #form-rent {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 #rents-container {
   width: 100%;
   border: 1px solid rgb(255, 111, 0);
@@ -129,14 +301,17 @@ header {
   padding: 20px;
   box-sizing: border-box;
 }
-#rents-container > div {
+
+#rents-container>div {
   padding: 10px;
   border-radius: 10px;
   position: relative;
 }
-#rents-container > *:nth-child(odd) {
+
+#rents-container>*:nth-child(odd) {
   background-color: rgb(231, 231, 231);
 }
+
 .botao-devolvido {
   width: 30px;
   height: 30px;
@@ -149,6 +324,7 @@ header {
   color: #FFF;
   background: rgb(253, 89, 89);
 }
+
 .botao-devolvido:hover {
   background-color: rgb(255, 11, 11);
 }

@@ -66,7 +66,7 @@ function createCard(book, listOfBooks) {
 
     title.innerText = book.title;
     author.innerText = book.author;
-    stock.innerText = book.author;
+    stock.innerText = "Em Estoque: " + book.stock;
 
     div.addEventListener("click", e => {
         e.stopPropagation();
