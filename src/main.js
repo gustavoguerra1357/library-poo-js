@@ -95,7 +95,7 @@ function openBook(book) {
     closeBtn.onclick = () => {
         infoBook.classList.add("hidden");
         toggleScroll();
-        
+
     }
     updateInfos(book)
 
@@ -110,7 +110,7 @@ function openBook(book) {
             updateInfos(book)
             renderRents(book);
         }
-        
+
     }
 
     renderRents(book);
@@ -134,7 +134,7 @@ function renderRents(book) {
             updateInfos(book);
         })
         const formatedDate = new Intl.DateTimeFormat('pt-BR').format(e.devolucao)
-        div.innerHTML = "<div class='info-rent'><span>Nome: "+ e.name + "</span><span> Data de Devolução: " + formatedDate +"</span></div>"
+        div.innerHTML = "<div class='info-rent'><span>Nome: " + e.name + "</span><span> Data de Devolução: " + formatedDate + "</span></div>"
         div.appendChild(devolvido);
         rentsContainer.appendChild(div);
     })
@@ -153,7 +153,7 @@ function updateInfos(book) {
 document.querySelector("#rentsBtn").addEventListener("click", x => {
     const modalRents = document.querySelector("#modal-rents")
     document.querySelector("#rentsbook-list").innerHTML = ""
-    if(modalRents.classList.contains("hidden")) {
+    if (modalRents.classList.contains("hidden")) {
         toggleScroll();
         modalRents.classList.remove("hidden");
     }
@@ -171,7 +171,7 @@ document.querySelector("#rentsBtn").addEventListener("click", x => {
         })
 
         const formatedDate = new Intl.DateTimeFormat('pt-BR').format(x[1].devolucao)
-        div.innerHTML = "<div class='info-rent'><span>Livro: "+ x[0].title + "</span><span>Pego por: "+ x[1].name +"</span><span> Data de Devolução: " + formatedDate +"</span></div>"
+        div.innerHTML = "<div class='info-rent'><span>Livro: " + x[0].title + "</span><span>Pego por: " + x[1].name + "</span><span> Data de Devolução: " + formatedDate + "</span></div>"
         div.classList.add("rents");
         div.appendChild(devolvido);
         document.querySelector("#rentsbook-list").appendChild(div);
@@ -192,3 +192,41 @@ function toggleScroll() {
         document.body.style.overflow = 'hidden';
     }
 }
+
+
+//Parte de Exclusao de Livros
+document.querySelector("#deleteBtn").addEventListener("click", x => {
+    const listHtml = document.querySelector("#listbook-delete")
+    const modalDelete = document.querySelector("#modal-delete")
+    const books = library.getAllBooks();
+
+    listHtml.innerHTML = ""
+    if (modalDelete.classList.contains("hidden")) {
+        toggleScroll();
+        modalDelete.classList.remove("hidden");
+    }
+
+    //criar card
+    books.forEach(x => { //x = cada livro
+        const div = document.createElement("div");
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerText = "X"
+        deleteBtn.classList.add("close-button-rents")
+        deleteBtn.addEventListener("click", () => {
+            div.remove();
+            // const index = rents.indexOf(x); // Encontra a posição deste objeto específico
+            library.removeBook(x);
+            renderBooks();
+        })
+        div.innerHTML = "<div class='info-rent'><span>Livro: "+ x.title +" </span></div>"
+        div.classList.add("rents")
+        div.appendChild(deleteBtn)
+        listHtml.appendChild(div)
+
+    })
+})
+
+document.querySelector("#close-delete").addEventListener("click", x => {
+    document.querySelector("#modal-delete").classList.add("hidden");
+    toggleScroll();
+})

@@ -6,8 +6,12 @@ export class Library {
     addBook(book) {
         this.books.push(book);
     }
-    removeBook(title) {
-        this.books = this.books.filter(book => book.title !== title);
+    removeBook(book) {
+        const index = this.books.indexOf(book);
+
+        if (index > -1) {
+            this.books.splice(index, 1);
+        }
     }
     getAllBooks() {
         return this.books;
@@ -35,6 +39,7 @@ export class Library {
         if (registro) {
             const [book, rent] = registro;
             book.removerAluguel(rent);
+            book.stock += 1;
             this.rentedBooks = this.rentedBooks.filter(item => item[1] !== rentToRemove);
         }
     }

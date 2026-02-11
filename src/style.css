@@ -475,14 +475,7 @@ header>div:last-child {
   background-color: #e8f5e9;
 }
 
-#rents-container>*:nth-child(odd),
-#rentsbook-list>*:nth-child(odd) {
-  
-}
-
-
-
-#modal-rents {
+#modal-rents, #modal-delete {
   width: 90%;
   max-width: 700px;
   box-sizing: border-box;
@@ -499,10 +492,11 @@ header>div:last-child {
   border: 1px solid #e0e0e0;
   border-radius: 20px;
   z-index: 999;
+  min-height: 600px;
 
 }
 
-.header-rents {
+.header-rents, .header-delete {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -510,7 +504,7 @@ header>div:last-child {
 
 
 
-#rentsbook-list {
+#rentsbook-list, #listbook-delete {
   height: 400px;
   overflow-y: scroll;
 }
@@ -550,16 +544,6 @@ header>div:last-child {
   }
 
   #modal-rents {
-    width: 100%;
-    height: inherit;
-    display: block;
-    transform: none;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    overflow-y: scroll;
   }
 
   #rentsbook-list {
@@ -594,6 +578,13 @@ header>div:last-child {
     box-sizing: border-box;
     margin: 0;
     border: none;
+  }
+  #modal-infoBook .close-button {
+    top: 5px;
+    right: 5px;
+  }
+  .info-container {
+    height: 200px;
   }
 }
 
