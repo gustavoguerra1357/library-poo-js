@@ -41,6 +41,11 @@ form.addEventListener('submit', (event) => {
         const newBook = new Book(title, author, pages, imagemBase64, stock);
         library.addBook(newBook);
         renderBooks();
+        titleInput.value = "";
+        authorInput.value = "";
+        pagesInput.value = "";
+        stockInput.value = "";
+
 
     }
     if (imageFile) {
@@ -175,6 +180,7 @@ document.querySelector("#close-rents").addEventListener("click", x => {
 })
 
 function toggleScroll() {
+    document.querySelector("#modal-overlay").classList.toggle("hidden");
     if (document.body.style.overflow == 'hidden') {
         document.body.style.overflow = '';
     }

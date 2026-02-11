@@ -12,6 +12,15 @@ body {
   /* Garante que o corpo não ultrapasse a altura da tela */
 }
 
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Cor escura semi-transparente */
+  z-index: 998; /* Um número alto, mas menor que o do modal */
+}
 
 h1 {
   font-size: 1.5rem;
@@ -167,6 +176,7 @@ header>div:last-child {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 #list-books>div {
@@ -238,6 +248,7 @@ header>div:last-child {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
+  z-index: 999;
 
 }
 
@@ -494,7 +505,8 @@ header>div:last-child {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
   border-radius: 20px;
-  
+  z-index: 999;
+
 }
 
 .header-rents {
@@ -543,6 +555,7 @@ header>div:last-child {
   #list-books {
     justify-content: center;
   }
+
   #modal-rents {
     width: 100%;
     height: inherit;
@@ -555,7 +568,39 @@ header>div:last-child {
     border-radius: 0;
     overflow-y: scroll;
   }
+
   #rentsbook-list {
     height: 90%;
   }
 }
+
+@media (max-width: 478px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .header-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .button-header {
+    padding: 15px;
+  }
+
+  #modal-newbook {
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+  }
+}
+
