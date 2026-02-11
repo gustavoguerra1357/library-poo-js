@@ -104,10 +104,13 @@ function openBook(book) {
     RentBtn.onclick = () => {
         const name = document.querySelector("#name-input").value;
         const date = document.querySelector("#date-input").valueAsDate;
-        const rent = new Rent(name, date);
-        library.rentBook(book, rent);
-        updateInfos(book)
-        renderRents(book);
+        if (date != undefined) {
+            const rent = new Rent(name, date);
+            library.rentBook(book, rent);
+            updateInfos(book)
+            renderRents(book);
+        }
+        
     }
 
     renderRents(book);
@@ -130,7 +133,8 @@ function renderRents(book) {
             library.removerAluguel(e)
             updateInfos(book);
         })
-        div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
+        const formatedDate = new Intl.DateTimeFormat('pt-BR').format(e.devolucao)
+        div.innerHTML = "<div class='info-rent'><span>Nome: "+ e.name + "</span><span> Data de Devolução: " + formatedDate +"</span></div>"
         div.appendChild(devolvido);
         rentsContainer.appendChild(div);
     })
@@ -167,7 +171,7 @@ document.querySelector("#rentsBtn").addEventListener("click", x => {
         })
 
         const formatedDate = new Intl.DateTimeFormat('pt-BR').format(x[1].devolucao)
-        div.innerText = "Livro: " + x[0].title + ", Data de Devolução: " + formatedDate + ", pego por: " + x[1].name;
+        div.innerHTML = "<div class='info-rent'><span>Livro: "+ x[0].title + "</span><span>Pego por: "+ x[1].name +"</span><span> Data de Devolução: " + formatedDate +"</span></div>"
         div.classList.add("rents");
         div.appendChild(devolvido);
         document.querySelector("#rentsbook-list").appendChild(div);

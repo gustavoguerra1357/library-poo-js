@@ -2,7 +2,7 @@
 
 body {
   margin: 0;
-  font-family: "Sora", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
   color: rgb(32, 32, 32);
 }
 
@@ -44,7 +44,7 @@ header {
   padding: 30px 60px;
   background-color: #ffffff;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 /* 1.1 LOGO */
@@ -93,7 +93,6 @@ header>div:last-child {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
 }
@@ -280,7 +279,7 @@ header>div:last-child {
 .close-button-rents {
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 15px;
   transform: translate(0, -50%);
   color: #FFF;
   width: 30px;
@@ -306,7 +305,6 @@ header>div:last-child {
   box-sizing: border-box;
   border-radius: 12px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   border: 1px solid #e0e0e0;
   display: flex;
@@ -463,31 +461,26 @@ header>div:last-child {
 #rents-container>div,
 .rents {
   margin-top: 10px;
-  padding: 10px;
   border-radius: 10px;
   position: relative;
+}
+.info-rent {
+  color: #2e7d32;
+  font-weight: 600;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e8f5e9;
 }
 
 #rents-container>*:nth-child(odd),
 #rentsbook-list>*:nth-child(odd) {
-  background-color: rgb(231, 231, 231);
+  
 }
 
-.botao-devolvido {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translate(0, -50%);
-  border-radius: 50px;
-  color: #FFF;
-  background: rgb(253, 89, 89);
-}
 
-.botao-devolvido:hover {
-  background-color: rgb(255, 11, 11);
-}
 
 #modal-rents {
   width: 90%;
