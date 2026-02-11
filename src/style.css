@@ -6,6 +6,13 @@ body {
   color: rgb(32, 32, 32);
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  /* Garante que o corpo não ultrapasse a altura da tela */
+}
+
+
 h1 {
   font-size: 1.5rem;
 }
@@ -77,8 +84,8 @@ header>div:last-child {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   border: 1px solid #e0e0e0;
 }
 
@@ -218,12 +225,12 @@ header>div:last-child {
 #modal-infoBook {
   width: 90%;
   height: 90%;
-  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #FFF;
+  border: 1px solid #e0e0e0;
   padding: 20px;
   border-radius: 20px;
   box-sizing: border-box;
@@ -234,13 +241,51 @@ header>div:last-child {
 
 }
 
-#close-info {
+.close-button {
   position: fixed;
-  right: 10px;
-  top: 10px;
+  right: -20px;
+  top: -20px;
   padding: 10px;
-  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
+
+.close-button:hover {
+  background-color: #e60000;
+  transform: scale(1.05);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+.close-button-rents {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translate(0, -50%);
+  color: #FFF;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  background-color: #ff4d4d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.close-button-rents:hover {
+  background-color: #e60000;
+}
+
 
 /*4.1 - INFO CONTAINER*/
 .info-container {
@@ -404,13 +449,16 @@ header>div:last-child {
   overflow-y: auto;
 }
 
-#rents-container>div {
+#rents-container>div,
+.rents {
+  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   position: relative;
 }
 
-#rents-container>*:nth-child(odd) {
+#rents-container>*:nth-child(odd),
+#rentsbook-list>*:nth-child(odd) {
   background-color: rgb(231, 231, 231);
 }
 
@@ -422,7 +470,6 @@ header>div:last-child {
   right: 10px;
   transform: translate(0, -50%);
   border-radius: 50px;
-  border: 2px solid rgb(255, 85, 85);
   color: #FFF;
   background: rgb(253, 89, 89);
 }
@@ -436,7 +483,6 @@ header>div:last-child {
   max-width: 700px;
   box-sizing: border-box;
   padding: 20px;
-  border: 1px solid red;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -445,21 +491,23 @@ header>div:last-child {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  
 }
+
 .header-rents {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid blue;
 }
-.header-rents button {
-  width: 30px;
-  height: 30px;
-  border-radius: 30px;
-}
+
+
+
 #rentsbook-list {
-  min-height: 350px;
-  border: 1px solid green;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 @media (max-width: 1280px) {
@@ -494,5 +542,20 @@ header>div:last-child {
 
   #list-books {
     justify-content: center;
+  }
+  #modal-rents {
+    width: 100%;
+    height: inherit;
+    display: block;
+    transform: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    overflow-y: scroll;
+  }
+  #rentsbook-list {
+    height: 90%;
   }
 }

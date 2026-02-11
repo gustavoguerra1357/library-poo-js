@@ -82,12 +82,15 @@ function createCard(book, listOfBooks) {
 
 }
 function openBook(book) {
+    toggleScroll();
     //Essa funcao é responsavel por abrir e mostrar todas as informações do livro
     const infoBook = document.querySelector("#modal-infoBook");
     const closeBtn = document.querySelector("#close-info");
 
     closeBtn.onclick = () => {
-        infoBook.classList.add("hidden")
+        infoBook.classList.add("hidden");
+        toggleScroll();
+        
     }
     updateInfos(book)
 
@@ -114,11 +117,12 @@ function renderRents(book) {
         const div = document.createElement("div");
         const devolvido = document.createElement("button");
         devolvido.innerText = "X"
-        devolvido.classList.add("botao-devolvido");
+        devolvido.classList.add("close-button-rents");
         devolvido.addEventListener("click", () => {
             div.remove();
             // const index = rentsOfBook.indexOf(e); // Encontra a posição deste objeto específico
             book.removerAluguel(e);
+            library.removerAluguel(e)
             updateInfos(book);
         })
         div.innerText = "Nome: " + e.name + " Devolução: " + e.devolucao;
@@ -139,15 +143,17 @@ function updateInfos(book) {
 
 document.querySelector("#rentsBtn").addEventListener("click", x => {
     const modalRents = document.querySelector("#modal-rents")
-    console.log(library.getRentedBooks());
-    modalRents.classList.remove("hidden");
+    document.querySelector("#rentsbook-list").innerHTML = ""
+    if(modalRents.classList.contains("hidden")) {
+        toggleScroll();
+        modalRents.classList.remove("hidden");
+    }
     const rents = library.getRentedBooks();
     rents.forEach((x) => { //x = [livro, rent]
         const div = document.createElement("div");
-
         const devolvido = document.createElement("button");
         devolvido.innerText = "X"
-        devolvido.classList.add("botao-devolvido");
+        devolvido.classList.add("close-button-rents")
         devolvido.addEventListener("click", () => {
             div.remove();
             // const index = rents.indexOf(x); // Encontra a posição deste objeto específico
@@ -156,12 +162,23 @@ document.querySelector("#rentsBtn").addEventListener("click", x => {
         })
 
         const formatedDate = new Intl.DateTimeFormat('pt-BR').format(x[1].devolucao)
-        div.innerText = "Titulo: " + x[0].title + ", Data de Devolução: " + formatedDate;
+        div.innerText = "Livro: " + x[0].title + ", Data de Devolução: " + formatedDate + ", pego por: " + x[1].name;
+        div.classList.add("rents");
         div.appendChild(devolvido);
-        modalRents.appendChild(div);
+        document.querySelector("#rentsbook-list").appendChild(div);
     })
 })
 
 document.querySelector("#close-rents").addEventListener("click", x => {
-    document.querySelector("#modal-rents").classList.add("hidden")
+    document.querySelector("#modal-rents").classList.add("hidden");
+    toggleScroll();
 })
+
+function toggleScroll() {
+    if (document.body.style.overflow == 'hidden') {
+        document.body.style.overflow = '';
+    }
+    else {
+        document.body.style.overflow = 'hidden';
+    }
+}
