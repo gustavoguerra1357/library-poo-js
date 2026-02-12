@@ -5,49 +5,49 @@ export const seedBooks = [
     "1984", 
     "George Orwell",
     328, 
-    "./src/assets/covers/1984.jpg",
+    "./public/covers/1984.jpg",
     32
   ),
   new Book(
     "A Revolução dos Bichos", 
     "George Orwell",
     152, 
-    "./src/assets/covers/revolucao.jpg",
+    "./public/covers/revolucao.jpg",
     3
   ),
   new Book(
     "Eu, Robô",
     "Isaac Asimov", 
     320, 
-    "./src/assets/covers/eu-robo.jpg",
+    "./public/covers/eu-robo.jpg",
     7
   ),
   new Book(
     "O Alienista", 
     "Machado de Assis",
     160, 
-    "./src/assets/covers/alienista.jpg",
+    "./public/covers/alienista.jpg",
     11
   ),
   new Book(
     "Sherlock Holmes - Um Estudo em Vermelho", 
     "Arthur Conan Doyle",
     160, 
-    "./src/assets/covers/sherlock.jpg",
+    "./public/covers/sherlock.jpg",
     16
   ),
   new Book(
     "Frankenstein", 
     "Mary Shelley",
     304, 
-    "./src/assets/covers/frankenstein.jpg",
+    "./public/covers/frankenstein.jpg",
     9
   ),
   new Book(
     "Fahrenheit 451", 
     "Ray Bradbury",
     216, 
-    "./src/assets/covers/fahrenheit.jpg",
+    "./public/covers/fahrenheit.jpg",
     7
   )
 ];
