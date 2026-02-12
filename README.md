@@ -48,7 +48,7 @@ Este projeto foi desenvolvido com o objetivo de **praticar conceitos fundamentai
 
 ## 📸 Screenshots
 
-IMAGENS
+![MOCKUP TELA DO SISTEMA](./src/assets/mock.png)
 
 ---
 
