@@ -2,8 +2,13 @@ import './style.css'
 import { Book } from './entities/Book.js';
 import { Library } from './entities/Library.js';
 import { Rent } from './entities/Rent.js';
+import { seedBooks } from "./seed.js";
 
 const library = new Library();
+seedBooks.forEach(book => {
+    library.addBook(book);
+});
+renderBooks();
 
 const newBtn = document.querySelector("#newBtn")
 const closeNewBtn = document.querySelector("#btn-cancelar")
